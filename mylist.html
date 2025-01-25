@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Bucket List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: white;
+            background-color: beige;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            font-family: cursive;
+            background-color: #2a1205;
+        }
+        #bucket-list {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #2a1205;
+            border-radius: 10px;
+        }
+        input[type="text"] {
+            width: 75%;
+            padding: 10px;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px 0;
+            border-bottom: 1px solid white;
+        }
+        label {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Personal Bucket List</h1>
+    </header>
+    <div id="bucket-list">
+        <h2>My Bucket List</h2>
+        <form id="add-item-form">
+            <input type="text" id="new-item" placeholder="Add new item...">
+            <input type="submit" value="Add">
+        </form>
+        <ul id="list">
+            <!-- List items will be added here -->
+        </ul>
+    </div>
+
+    <script>
+        const form = document.getElementById('add-item-form');
+        const list = document.getElementById('list');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const newItem = document.getElementById('new-item').value;
+            if (newItem) {
+                const li = document.createElement('li');
+                li.innerHTML = `<input type="checkbox"> <label>${newItem}</label>`;
+                list.appendChild(li);
+                document.getElementById('new-item').value = '';
+            }
+        });
+    </script>
+</body>
+</html>
